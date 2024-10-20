@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ This piece of work is to enhance errorhospitalsystem project functionality.
+  ~                                                                           ~
+  ~ Author:    eomisore                                                       ~
+  ~ File:      ErrorHospital.xsd                                              ~
+  ~ Created:   19/10/2024, 03:45                                              ~
+  ~ Modified:  19/10/2024, 03:45                                              ~
+  ~                                                                           ~
+  ~ Copyright (c)  2024.  Aerosimo Ltd                                        ~
+  ~                                                                           ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a   ~
+  ~ copy of this software and associated documentation files (the "Software"),~
+  ~ to deal in the Software without restriction, including without limitation ~
+  ~ the rights to use, copy, modify, merge, publish, distribute, sublicense,  ~
+  ~ and/or sell copies of the Software, and to permit persons to whom the     ~
+  ~ Software is furnished to do so, subject to the following conditions:      ~
+  ~                                                                           ~
+  ~ The above copyright notice and this permission notice shall be included   ~
+  ~ in all copies or substantial portions of the Software.                    ~
+  ~                                                                           ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,           ~
+  ~ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES           ~
+  ~ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  ~
+  ~ NONINFINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT                ~
+  ~ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,              ~
+  ~ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING              ~
+  ~ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE                ~
+  ~ OR OTHER DEALINGS IN THE SOFTWARE.                                        ~
+  ~                                                                           ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<xsd:schema xmlns:tns="https://aerosimo.com/api/ws/errorhospital" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            version="1.0" targetNamespace="https://aerosimo.com/api/ws/errorhospital">
+    <xsd:element name="ErrorResult" type="tns:errorResult"/>
+    <xsd:element name="getTopErrors" type="tns:getTopErrors"/>
+    <xsd:element name="getTopErrorsResponse" type="tns:getTopErrorsResponse"/>
+    <xsd:element name="recordError" type="tns:recordError"/>
+    <xsd:element name="recordErrorResponse" type="tns:recordErrorResponse"/>
+    <xsd:complexType name="recordError">
+        <xsd:sequence>
+            <xsd:element name="faultcode" type="xsd:string"/>
+            <xsd:element name="faultmessage" type="xsd:string"/>
+            <xsd:element name="faultservicename" type="xsd:string"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="recordErrorResponse">
+        <xsd:sequence>
+            <xsd:element name="recordError" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="getTopErrors">
+        <xsd:sequence>
+            <xsd:element name="records" type="xsd:int"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="getTopErrorsResponse">
+        <xsd:sequence>
+            <xsd:element name="getTopErrors" type="tns:errorResult" minOccurs="0" maxOccurs="unbounded"/>
+        </xsd:sequence>
+    </xsd:complexType>
+    <xsd:complexType name="errorResult">
+        <xsd:sequence>
+            <xsd:element name="errorRef" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="errorTime" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="errorCode" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="errorMessage" type="xsd:string" minOccurs="0"/>
+            <xsd:element name="errorService" type="xsd:string" minOccurs="0"/>
+        </xsd:sequence>
+    </xsd:complexType>
+</xsd:schema>

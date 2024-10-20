@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+  ~ This piece of work is to enhance errorhospitalsystem project functionality.
+  ~                                                                           ~
+  ~ Author:    eomisore                                                       ~
+  ~ File:      ErrorHospital.wsdl                                             ~
+  ~ Created:   19/10/2024, 03:43                                              ~
+  ~ Modified:  19/10/2024, 03:43                                              ~
+  ~                                                                           ~
+  ~ Copyright (c)  2024.  Aerosimo Ltd                                        ~
+  ~                                                                           ~
+  ~ Permission is hereby granted, free of charge, to any person obtaining a   ~
+  ~ copy of this software and associated documentation files (the "Software"),~
+  ~ to deal in the Software without restriction, including without limitation ~
+  ~ the rights to use, copy, modify, merge, publish, distribute, sublicense,  ~
+  ~ and/or sell copies of the Software, and to permit persons to whom the     ~
+  ~ Software is furnished to do so, subject to the following conditions:      ~
+  ~                                                                           ~
+  ~ The above copyright notice and this permission notice shall be included   ~
+  ~ in all copies or substantial portions of the Software.                    ~
+  ~                                                                           ~
+  ~ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,           ~
+  ~ EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES           ~
+  ~ OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND                  ~
+  ~ NONINFINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT                ~
+  ~ HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,              ~
+  ~ WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING              ~
+  ~ FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE                ~
+  ~ OR OTHER DEALINGS IN THE SOFTWARE.                                        ~
+  ~                                                                           ~
+  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+
+<definitions
+        xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata"
+        xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+        xmlns:tns="https://aerosimo.com/api/ws/errorhospital" xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://schemas.xmlsoap.org/wsdl/" targetNamespace="https://aerosimo.com/api/ws/errorhospital"
+        name="ErrorHospitalService">
+    <types>
+        <xsd:schema>
+            <xsd:import namespace="https://aerosimo.com/api/ws/errorhospital"
+                        schemaLocation="../XSD/ErrorHospital.xsd"/>
+        </xsd:schema>
+    </types>
+    <message name="recordError">
+        <part name="parameters" element="tns:recordError"/>
+    </message>
+    <message name="recordErrorResponse">
+        <part name="parameters" element="tns:recordErrorResponse"/>
+    </message>
+    <message name="getTopErrors">
+        <part name="parameters" element="tns:getTopErrors"/>
+    </message>
+    <message name="getTopErrorsResponse">
+        <part name="parameters" element="tns:getTopErrorsResponse"/>
+    </message>
+    <portType name="ErrorHospital">
+        <operation name="recordError">
+            <input wsam:Action="https://aerosimo.com/api/ws/errorhospital/ErrorHospital/recordErrorRequest"
+                   message="tns:recordError"/>
+            <output wsam:Action="https://aerosimo.com/api/ws/errorhospital/ErrorHospital/recordErrorResponse"
+                    message="tns:recordErrorResponse"/>
+        </operation>
+        <operation name="getTopErrors">
+            <input wsam:Action="https://aerosimo.com/api/ws/errorhospital/ErrorHospital/getTopErrorsRequest"
+                   message="tns:getTopErrors"/>
+            <output wsam:Action="https://aerosimo.com/api/ws/errorhospital/ErrorHospital/getTopErrorsResponse"
+                    message="tns:getTopErrorsResponse"/>
+        </operation>
+    </portType>
+    <binding name="ErrorHospitalPortBinding" type="tns:ErrorHospital">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <operation name="recordError">
+            <soap12:operation soapAction=""/>
+            <input>
+                <soap12:body use="literal"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+            </output>
+        </operation>
+        <operation name="getTopErrors">
+            <soap12:operation soapAction=""/>
+            <input>
+                <soap12:body use="literal"/>
+            </input>
+            <output>
+                <soap12:body use="literal"/>
+            </output>
+        </operation>
+    </binding>
+    <service name="ErrorHospitalService">
+        <port name="ErrorHospitalPort" binding="tns:ErrorHospitalPortBinding">
+            <soap12:address location="localhost:8082/errorhospitalsystem/ws/errorhospital"/>
+        </port>
+    </service>
+</definitions>
