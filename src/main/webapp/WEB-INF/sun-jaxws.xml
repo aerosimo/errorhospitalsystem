@@ -31,5 +31,5 @@
   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
 <endpoints xmlns="http://java.sun.com/xml/ns/jax-ws/ri/runtime" version="2.0">
-    <endpoint name="ErrorHospital" implementation="com.aerosimo.ominet.service.ErrorHospitalService" url-pattern="/ws/errorhospital" />
+    <endpoint name="ErrorHospital" implementation="com.aerosimo.ominet.api.ErrorHospitalSOAPService" url-pattern="/ws/errorhospital" />
 </endpoints>

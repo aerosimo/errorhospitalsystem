@@ -63,7 +63,7 @@
     <servlet-class>org.glassfish.jersey.servlet.ServletContainer</servlet-class>
     <init-param>
       <param-name>jersey.config.server.provider.packages</param-name>
-      <param-value>com.aerosimo.ominet.service</param-value>
+      <param-value>com.aerosimo.ominet.api</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>
   </servlet>
@@ -83,4 +83,5 @@
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
+
 </web-app>

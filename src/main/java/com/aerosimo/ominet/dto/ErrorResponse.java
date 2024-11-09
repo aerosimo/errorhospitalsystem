@@ -2,9 +2,9 @@
  * This piece of work is to enhance errorhospitalsystem project functionality.*
  *                                                                            *
  * Author:    eomisore                                                        *
- * File:      Connect.java                                                    *
- * Created:   18/10/2024, 18:54                                               *
- * Modified:  18/10/2024, 18:54                                               *
+ * File:      ErrorResponse.java                                              *
+ * Created:   19/10/2024, 02:52                                               *
+ * Modified:  19/10/2024, 02:52                                               *
  *                                                                            *
  * Copyright (c)  2024.  Aerosimo Ltd                                         *
  *                                                                            *
@@ -29,40 +29,24 @@
  *                                                                            *
  ******************************************************************************/
 
-package com.aerosimo.ominet.core;
+package com.aerosimo.ominet.dto;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+public class ErrorResponse {
 
-import javax.naming.Context;
-import javax.sql.DataSource;
-import java.sql.Connection;
-import java.sql.SQLException;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
+    private String errorRef;
 
-public class Connect {
-    private static final Logger log;
-
-    static {
-        log = LogManager.getLogger(Connect.class.getName());
+    public ErrorResponse(String errorRef) {
+        this.errorRef = errorRef;
     }
 
-    static Connection con;
-    static Context ctx;
-    static DataSource ds;
+    public ErrorResponse() {
+    }
 
-    public static Connection hats() {
+    public String getErrorRef() {
+        return errorRef;
+    }
 
-        try {
-            log.info("Preparing connection to Oracle Database");
-            ctx = new InitialContext();
-            ds = (DataSource) ctx.lookup("java:/comp/env/jdbc/hats");
-            con = ds.getConnection();
-            log.info("Successfully connected to Oracle Database");
-        } catch (NamingException | SQLException err) {
-            log.error("Oracle Database Connection failed with the following - {}", Connect.class.getName(), err);
-        }
-        return con;
+    public void setErrorRef(String errorRef) {
+        this.errorRef = errorRef;
     }
 }

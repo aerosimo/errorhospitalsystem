@@ -99,9 +99,9 @@ The required dependencies are defined in `pom.xml`. Below are the key dependenci
 
 ## Detailed Explanation of Components
 
-### 1. **Luhn Algorithm** (Core Logic)
+### 1. **Error Hospital** (Core Logic)
 
-Located in `com/aerosimo/ominet/core/ErrorHospital.java`, this class implements the Error Hospital algorithm, a simple java class that record new instances and can fetch the existing records based on user specified parameters
+Located in `com/aerosimo/ominet/dao/ErrorHospital.java`, this class implements the Error Hospital algorithm, a simple java class that record new instances and can fetch the existing records based on user specified parameters
 
 ### 2. **SOAP Web Service** (JAX-WS)
 
